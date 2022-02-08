@@ -61,12 +61,13 @@ exports.setUser = async (request, response) => {
 
 exports.updateUser = async (request, response) => {
   const { id } = request.params;
-  const { username, photoURL, phoneNumber } = request.body;
+  const { email, username, photoURL, phoneNumber } = request.body;
   try {
     const user = await auth.updateUser(id, {
       displayName: username,
       photoURL,
       phoneNumber,
+      email,
     });
 
     return response.json(user);
